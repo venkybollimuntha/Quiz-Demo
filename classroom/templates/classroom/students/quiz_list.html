@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% include 'classroom/students/_header.html' with active='new' %}
+  <div class="card">
+
+    <table class="table mb-0">
+      <thead>
+        <tr>
+          <th>Quiz Name</th>
+          <th>Time</th>
+          <th>No.of Questions</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for quiz in quizzes %}
+          <tr>
+            <td class="align-middle">{{ quiz.name }}</td>
+            <td class="align-middle">10 Minutes </td>
+            <td class="align-middle">{{ quiz.questions_count }} questions</td>
+            <td class="text-right">
+              <a href="{% url 'students:take_quiz' quiz.pk %}" class="btn btn-primary" onclick = "alrt();">Start quiz</a>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td class="bg-light text-center font-italic" colspan="4">No New Quizes Available.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <script>
+    function alrt(){
+    const alertMessage = `Please remember all Notes:
+    • This quiz is available only once per user
+    • Do not open any new tab
+    • Time for this quiz is 10 Min
+    • If you don't complete with in 10 minutes, Quiz will be auto sumbitted`
+     window.alert(alertMessage);}
+
+</script>
+
+
+{% endblock %}

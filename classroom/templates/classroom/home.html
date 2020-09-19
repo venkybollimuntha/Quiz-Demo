@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Welcome to the Dhruvsoft! <span class="icon-emo-happy"></span></h2>
+  <p class="lead">
+    If you already have an account, go ahead and <a href="{% url 'login' %}"><b>log in </b></a>. If you are new to Dhruvsoft Quiz, get started
+    by creating a <a href="{% url 'student_signup' %}"> <b>Employee account </b></a>
+  </p>
+  <hr>
+{% endblock %}
